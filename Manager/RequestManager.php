@@ -49,8 +49,13 @@ class RequestManager
      */
     public function getRedirectedResponse(Request $request)
     {
+        if (empty($this->redirectedUrls) || count($this->redirectedUrls) <= 0) {
+            return null;
+        }
+
         $error = "'%s' key should be set in redirected url '%s' in your config file " . $this->sourceFile;
         $requestUri = $request->getPathInfo();
+
         foreach ($this->redirectedUrls as $key => $urlConf) {
             if (!isset($urlConf['from'])) {
                 throw new \Exception(sprintf($error, 'from', $key));

@@ -47,6 +47,7 @@ public function registerBundles()
 ### Step 3: Write your config redirected urls
 
 Create a new file inside app/config called 'redirected_urls.yml' and save urls you want to redirect inside it.
+take a look at: Ressource/doc/redirected_urls.sample.yml
 
 Note that you can use any other file name and path, just override 'skonsoft_redirector.redirection_source_file' in your config.yml
 

@@ -1,0 +1,11 @@
+#copy this file to app/config/redirected_urls.yml and edit it
+
+url1:
+    from: "/first-url-to-redirect" #required
+    to: "/redirect-destination"    #required
+    http_code: 301         #optionnal 
+    host: http:/www.my-new-website.com  #optionnal
+url2:
+    from: "/articles/1220"
+    to: "/articles/how-to-write-a-redirected-file.html" #SEO optimization
+    http_code: 302

@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="skonsoft_redirector.listener.request.class">Skonsoft\Bundle\RedirectorBundle\Listener\RequestListener</parameter>
+        <parameter key="skonsoft_redirector.manager.request_manager.class" >Skonsoft\Bundle\RedirectorBundle\Manager\RequestManager</parameter>
+        <parameter key="skonsoft_redirector.redirection_source_file">%kernel.root_dir%/config/redirected_urls.yml</parameter>
+    </parameters>
+
+    <services>
+        <service id="skonsoft_redirector.listener.request" class="%skonsoft_redirector.listener.request.class%">
+            <argument id="skonsoft_redirector.request_manager" type="service" />
+            <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" />
+        </service>
+        
+        <service id="skonsoft_redirector.request_manager" class="%skonsoft_redirector.manager.request_manager.class%">
+            <argument>%skonsoft_redirector.redirection_source_file%</argument>
+        </service>
+        
+    </services>
+</container>
